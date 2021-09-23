@@ -1,0 +1,392 @@
+$theme1: #61dafb;
+$theme2: #e36720;
+$theme3: #16fac2;
+$background: #282c34;
+
+//layout
+#root {
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient($background, #1f2329);
+  overflow: hidden;
+}
+.header {
+  width: 100%;
+  background-color: #e36720;
+  height: 3vh;
+}
+.main-container {
+  display: inline-block;
+  padding-top: 15vh;
+  height: 50vh;
+  width: 60vw;
+}
+
+.footer {
+  position: absolute;
+  bottom: calc(-3.5vh);
+
+  width: calc(150vw);
+  height: calc(10vh);
+}
+
+//main content
+.logo-container {
+  color: #3ebffa;
+  opacity: 1;
+  font-weight: 700;
+  font-size: calc(2vw);
+  display: inline-block;
+  height: calc(15vh);
+  border-radius: 10%;
+  line-height: 30px;
+}
+
+.textbox-background {
+  background-color: #171a1f;
+  width: 60vw;
+  border-radius: 50px;
+  height: 33vh;
+}
+.input-container {
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.input-tts {
+  width: 55vw;
+  height: 25vh;
+  color: #ffffff;
+  font-size: calc(1vw);
+  border: 0 solid black;
+  background-color: #171a1f;
+}
+.input-tts:focus {
+  outline: none;
+}
+
+.event-container {
+  height: calc(2vh);
+}
+
+//footer image css
+
+.wave {
+  background: url("../img/wave.svg") repeat-x;
+  position: absolute;
+
+  width: calc(160vw);
+  height: calc(100vh);
+  animation: wave 20s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+  transform: translate3d(0, 0, 0);
+}
+
+.wave:nth-of-type(2) {
+  animation: wave 20s cubic-bezier(0.36, 0.45, 0.63, 0.53) -5s infinite,
+    swell 5s ease -1s infinite;
+  opacity: 1;
+}
+
+@keyframes wave {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -1600px;
+  }
+}
+
+@keyframes swell {
+  0%,
+  100% {
+    transform: translate3d(0, -25px, 0);
+  }
+  50% {
+    transform: translate3d(0, 5px, 0);
+  }
+}
+
+span {
+  font-size: calc(1vw);
+  font-weight: 700;
+  color: white;
+  position: relative;
+  top: 0.3vh;
+}
+
+.left-header {
+  float: left;
+
+  padding-left: calc(1vw);
+}
+
+.right-header {
+  float: right;
+  padding-right: calc(1vw);
+}
+
+//image button
+.image-button-wrapper {
+  width: calc(4vw);
+  height: calc(3.5vw);
+  display: inline-block;
+}
+
+.image-button {
+  margin-top: 10%;
+  background-color: #3ebffa;
+  text-align: center;
+  display: inline-block;
+  width: calc(3vw);
+  height: calc(3vw);
+  border-radius: 50%;
+}
+
+img.convert-image {
+  margin-top: 15%;
+  width: 2vw;
+  height: 2vw;
+}
+
+img.convert-image-clicked {
+  margin-top: 15%;
+  width: 2vw;
+  height: 2vw;
+  animation: rotate_image 5s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+@keyframes rotate_image {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+//Modal
+.modal {
+  .ModalOverlay {
+    box-sizing: border-box;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+  }
+  .ModalWrapper {
+    box-sizing: border-box;
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    overflow: auto;
+    outline: 0;
+  }
+  .ModalInner {
+    box-sizing: border-box;
+    position: relative;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+    border-radius: 10px;
+    width: calc(50vw);
+    max-width: calc(50vh);
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+}
+
+//Modal Radio
+.middle {
+  width: 100%;
+  text-align: center;
+  input[type="radio"] {
+    display: none;
+    &:checked {
+      + .box {
+        background-color: #3ebffa;
+        span {
+          color: white;
+          transform: translateY(70px);
+          &:before {
+            transform: translateY(0px);
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+  .box {
+    width: 200px;
+    height: 200px;
+    background-color: #ffffff;
+    transition: all 250ms ease;
+    will-change: transition;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    font-weight: 900;
+    &:active {
+      transform: translateY(10px);
+    }
+    span {
+      position: absolute;
+      transform: translate(0, 60px);
+      left: 0;
+      right: 0;
+      transition: all 300ms ease;
+      font-size: 1.5em;
+      user-select: none;
+      color: #3ebffa;
+      &:before {
+        font-size: 1.2em;
+        display: block;
+        transform: translateY(-80px);
+        opacity: 0;
+        transition: all 300ms ease-in-out;
+        font-weight: normal;
+        color: white;
+      }
+    }
+  }
+  .standard {
+    span {
+      &:before {
+        content: "안녕하세요?";
+      }
+    }
+  }
+
+  .chungcheong {
+    span {
+      &:before {
+        content: "너 뭐여!!";
+      }
+    }
+  }
+
+  .gyeongnam {
+    span {
+      &:before {
+        content: "므";
+      }
+    }
+  }
+
+  /* Made by */
+  p {
+    color: #ffffff;
+
+    font-weight: 400;
+    a {
+      text-decoration: underline;
+      font-weight: bold;
+      color: #fff;
+    }
+    span {
+      &:after {
+        content: "\f0e7";
+        color: yellow;
+      }
+    }
+  }
+}
+
+.player {
+  width: 100%;
+  text-align: center;
+  input[type="radio"] {
+    display: none;
+    &:checked {
+      + .box {
+        background-color: #3ebffa;
+        span {
+          color: white;
+          transform: translateY(70px);
+          &:before {
+            transform: translateY(0px);
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+  .box {
+    width: 200px;
+    height: 200px;
+    background-color: #ffffff;
+    transition: all 250ms ease;
+    will-change: transition;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    font-weight: 900;
+    &:active {
+      transform: translateY(10px);
+    }
+    span {
+      position: absolute;
+      transform: translate(0, 60px);
+      left: 0;
+      right: 0;
+      transition: all 300ms ease;
+      font-size: 1.5em;
+      user-select: none;
+      color: #3ebffa;
+      &:before {
+        font-size: 1.2em;
+        display: block;
+        transform: translateY(-80px);
+        opacity: 0;
+        transition: all 300ms ease-in-out;
+        font-weight: normal;
+        color: white;
+      }
+    }
+  }
+  .play {
+    span {
+      &:before {
+        content: "안녕하세요?";
+      }
+    }
+  }
+
+  .download {
+    span {
+      &:before {
+        content: "므";
+      }
+    }
+  }
+
+  /* Made by */
+  p {
+    color: #ffffff;
+
+    font-weight: 400;
+    a {
+      text-decoration: underline;
+      font-weight: bold;
+      color: #fff;
+    }
+    span {
+      &:after {
+        content: "\f0e7";
+        color: yellow;
+      }
+    }
+  }
+}

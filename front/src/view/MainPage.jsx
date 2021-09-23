@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../componet/header";
 import Footer from "../componet/footer";
 import Logo from "../componet/logo";
 import Main from "../componet/Main";
+import { ImageButton } from "../componet/ImageButton";
+import { ModalController } from "../componet/ModalController";
 export default function MainPage() {
+  const [visible, setVisible] = useState(false);
+  const [category, setCategory] = useState("none");
+  const [isAudio, setAudio] = useState(false);
+  const [clickFlag, setClick] = useState("");
+
+  const handlerImageButton = () => {
+    setVisible(true);
+    setClick("clicked");
+  };
+  useEffect(() => {
+    console.log(visible);
+    console.log(category);
+  });
   return (
     <div className="main-page">
       <Header className="header">
@@ -21,35 +36,12 @@ export default function MainPage() {
           </div>
 
           <div className="event-container">
-            <div className="radio-container">
-              <div className="convert-button">
-                <button className="button" id="convert">
-                  변환
-                </button>
-              </div>
-              <div className="radio">
-                <input type="radio" name="test" value="test" />
-                test
-              </div>
-              <div className="radio">
-                <input type="radio" name="test" value="test" />
-                test
-              </div>
-              <div className="radio">
-                <input type="radio" name="test" value="test" />
-                test
-              </div>
-            </div>
             <div className="button-container">
-              <button className="button" id="listen">
-                오디오 입력
-              </button>
-              <button className="button" id="listen">
-                듣기
-              </button>
-              <button className="button" id="download">
-                다운로드
-              </button>
+              <ImageButton
+                src=""
+                click={clickFlag}
+                event={handlerImageButton}
+              />
             </div>
           </div>
         </div>
@@ -60,6 +52,11 @@ export default function MainPage() {
           <div className="wave"></div>
         </div>
       </Footer>
+      <SelectModal
+        visible={visible}
+        setData={setVisible}
+        Category={setCategory}
+      />
     </div>
   );
 }
